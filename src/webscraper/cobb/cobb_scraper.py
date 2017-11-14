@@ -179,6 +179,14 @@ for num,i in enumerate(inmates_info.keys()):
                 inmate_row_i[k]=inmates_info[i][0].loc[3][0]
             except Exception as e:
                 inmate_row_i['notes']+=' Error with column '+k+': '+str(e)+' | '
+        if k=='current_status':
+            try:
+                if type(inmates_info[i][-1].iloc[1][2])==type(inmates_info[i][-1].iloc[1][2]):
+                    inmate_row_i[k]=' '
+            else:
+                inmate_row_i[k]=inmates_info[i][-1].iloc[1][2]
+            except Exception as e:
+                inmate_row_i['notes']+=' Error with column '+k+': '+str(e)+' | '
         if k=='facility':
             try:
                 fac=inmates_info[i][0].loc[7][3]
